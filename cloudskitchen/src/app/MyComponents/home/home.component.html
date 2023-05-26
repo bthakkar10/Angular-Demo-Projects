@@ -1,0 +1,87 @@
+<!-- carousel -->
+<div class="banner">
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <!-- <img src="../../../assets/img/bannerimg1.avif" class="d-block w-100" alt="..."> -->
+                <div class="carousel-images image1"></div>
+                <div class="carousel-caption  d-none d-md-block">
+                    <h3 class="text-dark">Lip-smacking, Freshly cooked food at your door step</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+
+                <div class="carousel-images image2"></div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark">Whatever you want, wherever you want it.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-images image3"></div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark">Make your day fabulous with our hassle-free and quick delivery.</h3>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- stepboxes -->
+<div class="step container">
+    <h1 class="text-center mt-3" style="color: #495057;">Get you Favourite Food in Just 3 easy steps</h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="StepBox">
+                <h1>1</h1>
+                <p class="fst-italic">Select Food</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="StepBox">
+                <h1>2</h1>
+                <p class="fst-italic">Fill the Required Details</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="StepBox">
+                <h1>3</h1>
+                <p class="fst-italic">Food delivery at your Doorstep in Minutes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FoodDetailsBox -->
+<div class="container my-3">
+    <h1 class="text-center mt-3" style="color: #495057;">Popular Food Items</h1>
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let fd of foodData; index as i">
+            <div class="FoodItemContainer m-2" *ngIf="i<=2">
+                <img src="{{fd.FoodImg}}"/>
+                <h3 class="text-center">{{fd.FoodName}}</h3>
+                <p class="text-center">{{fd.FoodPrice | currency:'INR'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center my-3">
+    <a routerLink="menu" class="btn btn-outline-secondary">View More <i class="bi bi-arrow-right"></i></a>
+</div>

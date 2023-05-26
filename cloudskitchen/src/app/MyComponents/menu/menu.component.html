@@ -1,0 +1,13 @@
+<div class="container my-4">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let fd of foodData">
+            <div class="FoodItemContainer m-2" >
+                <img src="{{fd.FoodImg}}"/>
+                <h3 class="text-center">{{fd.FoodName}}</h3>
+                <p class="text-center">{{fd.FoodDetail | slice: 0:50}}{{ fd.FoodDetail.length > 50 ? '...' : '' }}</p>
+                <p class="text-center">{{fd.FoodPrice | currency:'INR'}}</p>
+                <a class="btn btn-outline-success d-block" [routerLink]="['/menu', fd.id]">Buy Now &nbsp; <i class="bi bi-bag"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

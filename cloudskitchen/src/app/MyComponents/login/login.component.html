@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row mt-3 justify-content-center">
+        <div class="col-lg-6">
+            <h1 class="text-center">
+                Login
+            </h1>
+            <form (ngSubmit)="onSubmit()" [formGroup]="LoginForm" novalidate>
+                <!-- email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-bold">Email Address</label>
+                    <input formControlName="email" name="email" type="email" placeholder="Enter Your Email Address " class="form-control" id="email"
+                        [ngClass]="{'is-valid' : (f.email.touched || submitted) && emailValid, 'is-invalid' : (f.email.touched || submitted) && !emailValid}">
+                    <span class="text-danger" *ngIf="!emailRequiredValid && f.email.touched">Email address is
+                        required</span>
+                    <div *ngIf="emailRequiredValid">
+                    <span class="text-danger" *ngIf="!emailPatternValid && (f.email.touched || f.email.dirty)">Email address is not
+                        valid</span>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label fw-bold">Password</label>
+                    <input formControlName="password" name="password" type="password" placeholder="Enter password"
+                        class="form-control"
+                        [ngClass]="{ 'is-valid': (f.password.dirty || submitted) && passwordValid, 'is-invalid': (f.password.dirty || submitted) && !passwordValid }" />
+
+                    <div class="invalid">
+                        <span class="text-danger" *ngIf="(f.password.touched || submitted) && !requiredValid">Password is required</span>
+                        <div id="validation-rules" class="mt-3" *ngIf="requiredValid">
+
+                            <div [ngClass]="{ 'text-success': lengthValid, 'text-danger': !lengthValid }">
+                                <i [attr.class]="lengthValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+                                Must have minimum 8 and maximum 20 characters
+                            </div>
+                            <div [ngClass]="{ 'text-success': requiresDigitValid, 'text-danger': !requiresDigitValid }">
+                                <i [attr.class]="requiresDigitValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+                                Must contain at least 1 digit
+                            </div>
+                            <div [ngClass]="{ 'text-success': requiresUpperCaseValid , 'text-danger': !requiresUpperCaseValid }">
+                                <i [attr.class]="requiresUpperCaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+                                Must contain at least 1 upper case character
+                            </div>
+                            <div [ngClass]="{ 'text-success': requiresLowerCaseValid , 'text-danger': !requiresLowerCaseValid }">
+                                <i [attr.class]="requiresLowerCaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+                                Must contain at least 1 lower case character
+                            </div>
+                            <div [ngClass]="{ 'text-success': requiresSpecialCharsValid , 'text-danger': !requiresSpecialCharsValid }">
+                                <i [attr.class]="requiresSpecialCharsValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+                                Must contain at least 1 special character
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- confirm password -->
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label fw-bold"> Confirm Password</label>
+                    <input formControlName="confirmPassword" name="confirmPassword" type="password" placeholder="Enter password again"
+                        class="form-control"
+                        [ngClass]="{ 'is-valid': (submitted || f.confirmPassword.touched) && !f.confirmPassword.errors, 'is-invalid': (submitted || f.confirmPassword.touched) && f.confirmPassword.errors }" />
+
+                    <div class="invalid" *ngIf="(submitted || f.confirmPassword.touched || f.confirmPassword.dirty) && f.confirmPassword.errors">
+                        <span class="text-danger" *ngIf="f.confirmPassword.errors?.['required'] && f.confirmPassword.touched">Confirm Password is required</span>
+                        <span class="text-danger" *ngIf="f.confirmPassword.errors?.['minLength'] && f.confirmPassword.touched">Password must be at least 8 characters long</span>
+                        <span class="text-danger" *ngIf="f.confirmPassword.errors?.['maxLength'] && f.confirmPassword.touched">Password must not be more than 20 characters long</span>
+                        <span class="text-danger" *ngIf="f.confirmPassword.errors?.['mismatch'] && f.confirmPassword.touched">Passwords do not match</span>
+                    </div>
+                </div>
+
+                <div class="mb-3 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-success" [disabled]="LoginForm.invalid">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

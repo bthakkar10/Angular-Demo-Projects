@@ -1,0 +1,17 @@
+.DetailsContainer img{
+    width: 100%;
+    height:400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.DetailsContainer{
+    color: #495057;
+}
+.DetailsContainer .details{
+    text-align: justify;
+    font-size: 20px;
+}
+.DetailsContainer .price{
+    text-align: center;
+    font-size: 22px;
+}

@@ -1,0 +1,36 @@
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-lg-6 DetailsContainer" *ngIf="menuData">
+            <img src="{{menuData[0].FoodImg}}" />
+            <div class="d-flex justify-content-between mt-3">
+                <h3 class="text-center">{{menuData[0].FoodName}}</h3>
+                <p class="price">Just <span class="fst-italic">{{menuData[0].FoodPrice | currency:'INR'}}</span></p>
+            </div>
+            <p class="details">{{menuData[0].FoodDetail}}</p>
+        </div>
+        <div class="col-lg-6">
+            <h3>Enter Your Details</h3>
+            <form #OrderForm="ngForm" (ngSubmit)="PlaceOrder(OrderForm)">
+                <div class="mb-3">
+                    <label for="fullname" class="form-label"> Full Name</label>
+                    <input type="text" #fullname="ngModel" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" required class="form-control" name="fullname" id="fullname" placeholder="Enter Your Full Name" ngModel>
+                    <span class="text-danger" *ngIf="fullname.errors?.['required'] && fullname.touched"> Full Name is required</span>
+                    <span class="text-danger" *ngIf="fullname.errors?.['pattern'] && fullname.touched">Enter only characters!!</span>
+                </div>
+                <div class="mb-3">
+                    <label for="contactno" class="form-label">Mobile Number</label>
+                    <input type="text" #contactno="ngModel" required pattern="[0-9]{10}$" class="form-control" name="contactno" id="contactno" placeholder="Enter Your Mobile Number" ngModel>
+                    <span class="text-danger" *ngIf="contactno.errors?.['required'] && contactno.touched"> Mobile Number is required</span>
+                    <span class="text-danger" *ngIf="contactno.errors?.['pattern'] && contactno.touched">Enter only 10 digits!!</span>
+                </div>
+                <div class="mb-3">
+                    <label for="Address" class="form-label">Address</label>
+                    <textarea class="form-control" #address="ngModel" required id="Address" name="address" rows="3" ngModel></textarea>
+                    <span class="text-danger" *ngIf="address.errors?.['required'] && contactno.touched">Your Address is required</span>
+                </div>
+                <button [disabled]="OrderForm.invalid"  class="btn btn-outline-success"> Place Order </button>
+            </form>
+        </div>
+    </div>
+</div>

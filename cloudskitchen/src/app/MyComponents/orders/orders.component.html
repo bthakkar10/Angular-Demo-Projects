@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="text-center">Orders List</h1>
+    <div *ngIf="this.orderdetails.length === 0; else elseBlock">
+        <h3>No Orders Right Now!!</h3>
+    </div>
+    <ng-template #elseBlock>
+        <table class="table align-middle table-hover ">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer Contact</th>
+                    <th scope="col">Customer Address</th>
+                    <th scope="col">FoodId</th>
+                    <th scope="col">Food Name</th>
+                    <th scope="col">Food Price</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let orders of orderdetails">
+                    <td>{{orders.fullname}}</td>
+                    <td>{{orders.contactno}}</td>
+                    <td>{{orders.address}}</td>
+                    <td>{{orders.foodid}}</td>
+                    <td>{{orders.foodname}}</td>
+                    <td>{{orders.foodprice}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+    
+</div>
