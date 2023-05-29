@@ -2,12 +2,12 @@
 
     <div class="row">
         <div class="col-lg-6 DetailsContainer" *ngIf="menuData">
-            <img src="{{menuData[0].FoodImg}}" />
+            <img src="{{menuData.FoodImg}}" />
             <div class="d-flex justify-content-between mt-3">
-                <h3 class="text-center">{{menuData[0].FoodName}}</h3>
-                <p class="price">Just <span class="fst-italic">{{menuData[0].FoodPrice | currency:'INR'}}</span></p>
+                <h3 class="text-center">{{menuData.FoodName}}</h3>
+                <p class="price">Just <span class="fst-italic">{{menuData.FoodPrice | currency:'INR'}}</span></p>
             </div>
-            <p class="details">{{menuData[0].FoodDetail}}</p>
+            <p class="details">{{menuData.FoodDetail}}</p>
         </div>
         <div class="col-lg-6">
             <h3>Enter Your Details</h3>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FoodDetails } from 'src/app/FoodDetails';
 import { FoodDetailsService } from 'src/app/Services/food-details.service';
 
 @Component({
@@ -7,6 +8,13 @@ import { FoodDetailsService } from 'src/app/Services/food-details.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
-    constructor(private service: FoodDetailsService){ }
-    foodData = this.service.foodDetails;
+  foodData : FoodDetails[] = [];
+  FoodDetailsService : FoodDetailsService = inject(FoodDetailsService);
+  constructor() {
+    this.FoodDetailsService.getAllFoodDetails().then((foodData: FoodDetails[]) => {
+      this.foodData = foodData;
+    });
+  }
 }
+    // constructor(private service: FoodDetailsService){ }
+    // foodData = this.service.foodDetails;
